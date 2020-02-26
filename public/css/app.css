@@ -10884,3 +10884,6 @@ a.text-dark:focus {
   }
 }
 
+.masquer {
+    display: none;
+}
