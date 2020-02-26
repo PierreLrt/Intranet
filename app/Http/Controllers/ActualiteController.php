@@ -11,13 +11,10 @@ class ActualiteController extends Controller
 
     public function create()
     {
-
         return view('actualites.create');
     }
 
     public function store(Request $request) {
-
-
         $userId = Auth::id();
 
         $actualite = Actualite::create([
@@ -28,6 +25,27 @@ class ActualiteController extends Controller
 
         $actualite->save();
 
+        session()->flash('succes', 'L\'actualité a été créé !');
+
         return redirect()->route('actualiteCreate');
+    }
+
+    public function edit($id) {
+        $actualite = Actualite::where('actualites.id', $id)->first();
+
+        return view('actualites.edit', compact('actualite'));
+    }
+
+    public function update($id, Request $request) {
+        $actualite = Actualite::where('actualites.id', $id)->first();
+
+        $actualite['titre'] = $request->input('titre');
+        $actualite['contenu'] = $request->input('contenu');
+
+        $actualite->save();
+
+        session()->flash('succes', 'L\'actualité a été édité !');
+
+        return redirect()->route('actualiteEdit', $id);
     }
 }

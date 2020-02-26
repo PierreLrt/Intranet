@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $actualites = Actualite::join('users', 'users.id', '=', 'actualites.user_id')->select('actualites.created_at', 'actualites.titre', 'actualites.contenu', 'users.name')->orderBy('actualites.created_at', 'DESC')->get();
+        $actualites = Actualite::join('users', 'users.id', '=', 'actualites.user_id')->select('actualites.created_at', 'actualites.titre', 'actualites.id', 'actualites.contenu', 'users.name')->orderBy('actualites.created_at', 'DESC')->get();
 
         return view('home', compact('actualites'));
     }

@@ -14,7 +14,7 @@
                         <h4>{{ $actualite['titre'] }}</h4>
                     </div>
                     <div class="card-body">
-                        <p class="text-right">Posté par {{ $actualite['name'] }} le {{date('d/m/Y à H\hm', strtotime($actualite['created_at']))}}</p>
+                        <p class="text-right">Posté par {{ $actualite['name'] }} le {{date('d/m/Y à H\hm', strtotime($actualite['created_at']))}} <a href="{{ route('actualiteEdit', $actualite['id']) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a></p>
                         <p>{!! nl2br(e($actualite['contenu'])) !!}</p>
                     </div>
                 </div>
