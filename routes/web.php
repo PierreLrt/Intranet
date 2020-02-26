@@ -31,3 +31,10 @@ Route::get('/profil/email', 'ProfilController@email')->name('profilEmail');
 Route::post('/profil/email', 'ProfilController@changeEmail')->name('profilChangeEmail');
 Route::get('/profil/mdp', 'ProfilController@mdp')->name('profilMdp');
 Route::post('/profil/mdp', 'ProfilController@changeMdp')->name('profilChangeMdp');
+
+Route::get('/evenements', 'EvenementController@index')->name('evenements');
+Route::get('/evenements/create', 'EvenementController@create')->name('evenementCreate');
+Route::post('/evenements/create', 'EvenementController@store')->name('evenementStore');
+Route::get('/evenements/edit/{id}', 'EvenementController@edit')->where(['id' => '[0-9]+'])->name('evenementEdit');
+Route::post('/evenements/edit/{id}', 'EvenementController@update')->where(['id' => '[0-9]+'])->name('evenementUpdate');
+Route::get('/evenements/delete/{id}', 'EvenementController@delete')->where(['id' => '[0-9]+'])->name('evenementDelete');
