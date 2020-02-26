@@ -24,3 +24,5 @@ Route::post('/actualites/create', 'ActualiteController@store')->name('actualiteS
 Route::get('/actualites/edit/{id}', 'ActualiteController@edit')->where(['id' => '[0-9]+'])->name('actualiteEdit');
 
 Route::post('/actualites/edit/{id}', 'ActualiteController@update')->where(['id' => '[0-9]+'])->name('actualiteUpdate');
+
+Route::delete('/actualites/{id}', 'ActualiteController@delete')->where(['id' => '[0-9]+'])->name('actualiteDelete');

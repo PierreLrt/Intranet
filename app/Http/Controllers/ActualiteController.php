@@ -48,4 +48,14 @@ class ActualiteController extends Controller
 
         return redirect()->route('actualiteEdit', $id);
     }
+
+    public function delete($id) {
+        $actualite = Actualite::where('actualites.id', $id)->first();
+
+        $actualite->delete();
+
+        session()->flash('succes', 'L\'actualité a été supprimé !');
+
+        return redirect()->route('home');
+    }
 }
