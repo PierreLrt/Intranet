@@ -24,3 +24,4 @@ Route::post('/actualites/edit/{id}', 'ActualiteController@update')->where(['id' 
 Route::delete('/actualites/{id}', 'ActualiteController@delete')->where(['id' => '[0-9]+'])->name('actualiteDelete');
 
 Route::post('/commentaires/create', 'CommentaireController@store')->name('commentaireStore');
+Route::get('/commentaires/delete/{id}', 'CommentaireController@delete')->where(['id' => '[0-9]+'])->name('commentaireDelete');

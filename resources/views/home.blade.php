@@ -56,7 +56,10 @@
                                         {{$commentaire['name']}} | Le {{date('d/m/Y à H\hm', strtotime($commentaire['created_at']))}}
                                     </div>
                                     <div class="card-body">
-                                        <p class="card-text">{{$commentaire['message']}}</p>
+                                        <div class="text-right">
+                                            <a href="{{ route('commentaireDelete', $commentaire['id']) }}" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                        </div>
+                                        <p class="card-text">{!! nl2br(e($commentaire['message'])) !!}</p>
                                     </div>
                                 </div>
                             @endforeach

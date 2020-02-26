@@ -23,4 +23,14 @@ class CommentaireController extends Controller
 
         return redirect()->route('home');
     }
+
+    public function delete($id) {
+        $commentaire = Commentaire::where('commentaires.id', $id)->first();
+
+        $commentaire->delete();
+
+        session()->flash('succes', 'Le commentaire a été supprimé !');
+
+        return redirect()->route('home');
+    }
 }
