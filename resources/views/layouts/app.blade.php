@@ -61,6 +61,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="">Profil</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -83,6 +84,13 @@
                 <div class="alert alert-success" role="alert">
                     <h4 class="alert-heading">Succès !</h4>
                     <p>{{ session()->get('succes') }}</p>
+                </div>
+            @endif
+
+            @if(session()->has('erreur'))
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">Erreur !</h4>
+                    <p>{{ session()->get('erreur') }}</p>
                 </div>
             @endif
 

@@ -25,3 +25,9 @@ Route::delete('/actualites/{id}', 'ActualiteController@delete')->where(['id' => 
 
 Route::post('/commentaires/create', 'CommentaireController@store')->name('commentaireStore');
 Route::get('/commentaires/delete/{id}', 'CommentaireController@delete')->where(['id' => '[0-9]+'])->name('commentaireDelete');
+
+Route::get('/profil', 'ProfilController@index')->name('profil');
+Route::get('/profil/email', 'ProfilController@email')->name('profilEmail');
+Route::post('/profil/email', 'ProfilController@changeEmail')->name('profilChangeEmail');
+Route::get('/profil/mdp', 'ProfilController@mdp')->name('profilMdp');
+Route::post('/profil/mdp', 'ProfilController@changeMdp')->name('profilChangeMdp');
