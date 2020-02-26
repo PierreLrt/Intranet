@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actualite;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $actualites = Actualite::join('users', 'users.id', '=', 'actualites.user_id')->select('actualites.created_at', 'actualites.titre', 'actualites.contenu', 'users.name')->orderBy('actualites.created_at', 'DESC')->get();
+
+        return view('home', compact('actualites'));
     }
 }
