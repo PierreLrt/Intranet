@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Auth;
 class PublicationController extends Controller
 {
     public function index() {
-        $publications = Publication::join('users', 'users.id', '=', 'publications.user_id')->select('publications.id', 'publications.message', 'publications.created_at', 'users.name', 'users.id AS idUser')->orderBy('publications.created_at')->get();
+        $userId = Auth::id();
+
+        $publications = Publication::join('users', 'users.id', '=', 'publications.user_id')->join('follows', 'follows.user_id_2', 'users.id')->select('publications.id', 'publications.message', 'publications.created_at', 'users.name', 'users.id AS idUser')->where('follows.user_id', $userId)->orderBy('publications.created_at', 'DESC')->get();
 
         return view('publications.index', compact('publications'));
     }
