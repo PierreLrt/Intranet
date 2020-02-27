@@ -42,3 +42,5 @@ Route::get('/evenements/delete/{id}', 'EvenementController@delete')->where(['id'
 Route::get('/publications', 'PublicationController@index')->name('publication');
 Route::post('/publications/create', 'PublicationController@store')->name('publicationStore');
 Route::get('/publications/delete/{id}', 'PublicationController@delete')->where(['id' => '[0-9]+'])->name('publicationDelete');
+
+Route::get('/profil/{id}', 'ProfilController@show')->where(['id' => '[0-9]+'])->name('profilShow');

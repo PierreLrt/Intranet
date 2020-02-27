@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Publication;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -89,5 +90,13 @@ class ProfilController extends Controller
         }
 
         return redirect()->route('profilMdp');
+    }
+
+    public function show($id) {
+        $user = User::select('name', 'email', 'created_at')->where('users.id', $id)->first();
+
+        $publications = Publication::join('users', 'users.id', '=', 'publications.user_id')->select('publications.id', 'publications.message', 'publications.created_at', 'users.name')->where('users.id', $id)->orderBy('publications.created_at')->get();
+
+        return view('profil.show', compact('user', 'publications'));
     }
 }
