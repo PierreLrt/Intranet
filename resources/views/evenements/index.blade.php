@@ -32,6 +32,66 @@
                             </div>
 
                             <p>{!! nl2br(e($evenement['description'])) !!}</p>
+
+                            <hr/>
+
+                            <div class="row text-center mb-3">
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Membres participants ({{$evenement['participants']->count()}})
+                                        </div>
+
+                                        <div class="card-body">
+                                            <ul>
+                                                @foreach($evenement['participants'] as $participant)
+                                                    <li>
+                                                        <a href="{{ route('profilShow', $participant['user_id']) }}">{{ __('@') }}{{$participant['name']}}</a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Membres en attente ({{$evenement['enAttentes']->count()}})
+                                        </div>
+
+                                        <div class="card-body">
+                                            @foreach($evenement['enAttentes'] as $participant)
+                                                <li>
+                                                    <a href="{{ route('profilShow', $participant['user_id']) }}">{{ __('@') }}{{$participant['name']}}</a>
+                                                </li>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            Membres non-participants ({{$evenement['nonParticipants']->count()}})
+                                        </div>
+
+                                        <div class="card-body">
+                                            @foreach($evenement['nonParticipants'] as $participant)
+                                                <li>
+                                                    <a href="{{ route('profilShow', $participant['user_id']) }}">{{ __('@') }}{{$participant['name']}}</a>
+                                                </li>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <a href="{{ route('evenementParticiper', [$evenement['id'], 1]) }}" class="btn btn-success"><i class="fa fa-check"></i> Participe</a>
+                                <a href="{{ route('evenementParticiper', [$evenement['id'], 2]) }}" class="btn btn-warning"><i class="fa fa-question-circle"></i> Peut-être</a>
+                                <a href="{{ route('evenementParticiper', [$evenement['id'], 3]) }}" class="btn btn-danger"><i class="fa fa-ban"></i> Ne participe pas</a>
+                            </div>
                         </div>
                     </div>
                 </div>
