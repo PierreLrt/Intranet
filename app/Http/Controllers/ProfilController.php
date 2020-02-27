@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Follow;
 use App\Publication;
 use App\User;
 use Illuminate\Http\Request;
@@ -93,10 +94,17 @@ class ProfilController extends Controller
     }
 
     public function show($id) {
-        $user = User::select('name', 'email', 'created_at')->where('users.id', $id)->first();
+        $userId = Auth::id();
+
+        $user = User::select('name', 'email', 'created_at', 'id')->where('users.id', $id)->first();
 
         $publications = Publication::join('users', 'users.id', '=', 'publications.user_id')->select('publications.id', 'publications.message', 'publications.created_at', 'users.name', 'users.id AS idUser')->where('users.id', $id)->orderBy('publications.created_at')->get();
 
-        return view('profil.show', compact('user', 'publications'));
+        $follow = Follow::where('user_id', $userId)->where('user_id_2', $user['id'])->count();
+
+        $nbAbonnements = Follow::where('user_id', $id)->count();
+        $nbAbonnes = Follow::where('user_id_2', $id)->count();
+
+        return view('profil.show', compact('user', 'publications', 'follow', 'nbAbonnements', 'nbAbonnes'));
     }
 }

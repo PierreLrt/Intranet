@@ -9,7 +9,7 @@
                         <span class="row text-center">
                             <span class="col-md-6">Abonnements</span>
                             <span class="col-md-6">
-                                <span class="badge badge-primary">100</span>
+                                <span class="badge badge-primary">{{$nbAbonnements}}</span>
                             </span>
                         </span>
                     </a>
@@ -17,7 +17,7 @@
                         <span class="row text-center">
                             <span class="col-md-6">Abonnés</span>
                             <span class="col-md-6">
-                                <span class="badge badge-primary">200</span>
+                                <span class="badge badge-primary">{{$nbAbonnes}}</span>
                             </span>
 
                         </span>
@@ -26,7 +26,7 @@
                         <span class="row text-center">
                             <span class="col-md-6">Publications</span>
                             <span class="col-md-6">
-                                <span class="badge badge-primary">30</span>
+                                <span class="badge badge-primary">{{count($publications)}}</span>
                             </span>
                         </span>
                     </a>
@@ -44,6 +44,13 @@
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <h2>{{$user['name']}}</h2>
+
+                                @if($follow == 0)
+                                    <a href="{{ route('followFollow', $user['id']) }}" class="btn btn-success mb-2">S'abonner</a>
+                                @else
+                                    <a href="{{ route('followUnfollow', $user['id']) }}" class="btn btn-danger mb-2">Se désabonner</a>
+                                @endif
+
                                 <p>Adresse email : {{$user['email']}}</p>
                                 <p>Date d'inscription : {{date('d/m/Y à H\hm', strtotime($user['created_at']))}}</p>
                             </div>

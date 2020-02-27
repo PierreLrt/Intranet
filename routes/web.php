@@ -44,3 +44,6 @@ Route::post('/publications/create', 'PublicationController@store')->name('public
 Route::get('/publications/delete/{id}', 'PublicationController@delete')->where(['id' => '[0-9]+'])->name('publicationDelete');
 
 Route::get('/profil/{id}', 'ProfilController@show')->where(['id' => '[0-9]+'])->name('profilShow');
+
+Route::get('/follow/{id}', 'FollowController@follow')->where(['id' => '[0-9]+'])->name('followFollow');
+Route::get('/unfollow/{id}', 'FollowController@unfollow')->where(['id' => '[0-9]+'])->name('followUnfollow');
