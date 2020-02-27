@@ -28,4 +28,14 @@ class PublicationController extends Controller
 
         return redirect()->route('publication');
     }
+
+    public function delete($id) {
+        $publication = Publication::where('publications.id', $id)->first();
+
+        $publication->delete();
+
+        session()->flash('succes', 'La publication a été supprimé !');
+
+        return redirect()->route('publication');
+    }
 }

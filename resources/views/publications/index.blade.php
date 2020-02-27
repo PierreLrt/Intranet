@@ -31,7 +31,7 @@
                 <div class="card-header">
                     <h5>
                         {{$publication['name']}}
-                        <a href="" class="btn btn-danger pull-right"><i class="fa fa-trash"></i></a>
+                        <a href="{{ route('publicationDelete', $publication['id']) }}" class="btn btn-danger pull-right"><i class="fa fa-trash"></i></a>
                     </h5>
                 </div>
                 <div class="card-body">
