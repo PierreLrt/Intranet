@@ -26,7 +26,7 @@
                                 </div>
 
                                 <div class="col-md-6">
-                                    <h5><i class="fa fa-clock-o"></i>Date de fin</h5>
+                                    <h5><i class="fa fa-clock-o"></i> Date de fin</h5>
                                     <h5>{{date('d/m/Y', strtotime($evenement['date_fin']))}}</h5>
                                 </div>
                             </div>

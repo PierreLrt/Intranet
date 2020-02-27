@@ -38,3 +38,6 @@ Route::post('/evenements/create', 'EvenementController@store')->name('evenementS
 Route::get('/evenements/edit/{id}', 'EvenementController@edit')->where(['id' => '[0-9]+'])->name('evenementEdit');
 Route::post('/evenements/edit/{id}', 'EvenementController@update')->where(['id' => '[0-9]+'])->name('evenementUpdate');
 Route::get('/evenements/delete/{id}', 'EvenementController@delete')->where(['id' => '[0-9]+'])->name('evenementDelete');
+
+Route::get('/publications', 'PublicationController@index')->name('publication');
+Route::post('/publications/create', 'PublicationController@store')->name('publicationStore');
