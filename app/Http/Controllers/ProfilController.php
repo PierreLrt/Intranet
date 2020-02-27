@@ -95,7 +95,7 @@ class ProfilController extends Controller
     public function show($id) {
         $user = User::select('name', 'email', 'created_at')->where('users.id', $id)->first();
 
-        $publications = Publication::join('users', 'users.id', '=', 'publications.user_id')->select('publications.id', 'publications.message', 'publications.created_at', 'users.name')->where('users.id', $id)->orderBy('publications.created_at')->get();
+        $publications = Publication::join('users', 'users.id', '=', 'publications.user_id')->select('publications.id', 'publications.message', 'publications.created_at', 'users.name', 'users.id AS idUser')->where('users.id', $id)->orderBy('publications.created_at')->get();
 
         return view('profil.show', compact('user', 'publications'));
     }

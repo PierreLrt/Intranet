@@ -25,10 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $actualites = Actualite::join('users', 'users.id', '=', 'actualites.user_id')->select('actualites.created_at', 'actualites.titre', 'actualites.id', 'actualites.contenu', 'users.name')->orderBy('actualites.created_at', 'DESC')->get();
+        $actualites = Actualite::join('users', 'users.id', '=', 'actualites.user_id')->select('actualites.created_at', 'actualites.titre', 'actualites.id', 'actualites.contenu', 'users.name', 'users.id AS idUser')->orderBy('actualites.created_at', 'DESC')->get();
 
         foreach ($actualites as $actualite) {
-            $commentaires = Commentaire::join('users', 'users.id', '=', 'commentaires.user_id')->select('commentaires.created_at', 'commentaires.message', 'commentaires.id', 'users.name')->where('actualite_id', $actualite['id'])->orderBy('commentaires.created_at', 'DESC')->get();
+            $commentaires = Commentaire::join('users', 'users.id', '=', 'commentaires.user_id')->select('commentaires.created_at', 'commentaires.message', 'commentaires.id', 'users.name', 'users.id AS idUser')->where('actualite_id', $actualite['id'])->orderBy('commentaires.created_at', 'DESC')->get();
             $actualite['commentaires'] = $commentaires;
         }
 

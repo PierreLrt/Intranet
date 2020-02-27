@@ -30,7 +30,7 @@
             <div class="card mb-2">
                 <div class="card-header">
                     <h5>
-                        {{$publication['name']}}
+                        <a href="{{ route('profilShow', $publication['idUser']) }}">{{ __('@') }}{{$publication['name']}}</a>
                         <a href="{{ route('publicationDelete', $publication['id']) }}" class="btn btn-danger pull-right"><i class="fa fa-trash"></i></a>
                     </h5>
                 </div>

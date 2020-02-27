@@ -19,7 +19,7 @@
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
 
-                                Posté par {{ $actualite['name'] }} le {{date('d/m/Y à H\hm', strtotime($actualite['created_at']))}}
+                                Posté par <a href="{{ route('profilShow', $actualite['idUser']) }}">{{ __('@') }}{{$actualite['name']}}</a> le {{date('d/m/Y à H\hm', strtotime($actualite['created_at']))}}
                                 <a href="{{ route('actualiteEdit', $actualite['id']) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
                                 <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                             </p>
@@ -53,7 +53,7 @@
                             @foreach ($actualite['commentaires'] as $commentaire)
                                 <div class="card mb-2">
                                     <div class="card-header">
-                                        {{$commentaire['name']}} | Le {{date('d/m/Y à H\hm', strtotime($commentaire['created_at']))}}
+                                        <a href="{{ route('profilShow', $commentaire['idUser']) }}">{{ __('@') }}{{$commentaire['name']}}</a> | Le {{date('d/m/Y à H\hm', strtotime($commentaire['created_at']))}}
                                     </div>
                                     <div class="card-body">
                                         <div class="text-right">
