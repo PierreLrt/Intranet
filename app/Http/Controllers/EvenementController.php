@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class EvenementController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index() {
         $evenements = Evenement::join('users', 'users.id', '=', 'evenements.user_id')->select('evenements.date_debut', 'evenements.date_fin', 'evenements.intitule', 'evenements.description','evenements.id', 'users.name')->orderBy('evenements.date_debut')->get();
 

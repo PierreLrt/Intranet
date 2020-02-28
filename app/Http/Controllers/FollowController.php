@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class FollowController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function follow($id) {
         $userId = Auth::id();
 
