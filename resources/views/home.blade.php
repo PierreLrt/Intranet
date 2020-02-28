@@ -20,8 +20,13 @@
                                 {{ method_field('DELETE') }}
 
                                 Posté par <a href="{{ route('profilShow', $actualite['idUser']) }}">{{ __('@') }}{{$actualite['name']}}</a> le {{date('d/m/Y à H\hm', strtotime($actualite['created_at']))}}
-                                <a href="{{ route('actualiteEdit', $actualite['id']) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
-                                <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+
+                                @foreach($currentUsers as $currentUser)
+                                    @if($currentUser['name'] == 'Administrateur')
+                                        <a href="{{ route('actualiteEdit', $actualite['id']) }}" class="btn btn-primary"><i class="fa fa-edit"></i></a>
+                                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                                    @endif
+                                @endforeach
                             </p>
                         </form>
 
@@ -47,7 +52,6 @@
                         <div class="text-center">
                             <button class="btn btn-primary text-center mb-2" onclick="masquer()">Commentaires ({{$actualite['commentaires']->count()}})</button>
                         </div>
-
 
                         <div class="masquer commentaires" id="masquer">
                             @foreach ($actualite['commentaires'] as $commentaire)

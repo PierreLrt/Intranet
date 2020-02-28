@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Evenement;
 use App\Participant;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +28,10 @@ class EvenementController extends Controller
             $evenement['nonParticipants'] = $nonParticipants;
         }
 
-        return view('evenements.index', compact('evenements'));
+        $userId = Auth::id();
+        $currentUsers = User::join('role_user', 'users.id', '=', 'role_user.user_id')->join('roles', 'roles.id', '=', 'role_user.role_id')->select('roles.name')->where('users.id', $userId)->get();
+
+        return view('evenements.index', compact('evenements', 'currentUsers'));
     }
 
     public function create() {

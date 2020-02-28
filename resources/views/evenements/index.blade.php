@@ -14,8 +14,12 @@
                             <h4>
                                 {{ $evenement['intitule'] }}
 
-                                <a href="{{ route('evenementDelete', $evenement['id']) }}" class="btn btn-danger pull-right"><i class="fa fa-trash"></i></a>
-                                <a href="{{ route('evenementEdit', $evenement['id']) }}" class="btn btn-primary pull-right mr-2"><i class="fa fa-edit"></i></a>
+                                @foreach($currentUsers as $currentUser)
+                                    @if($currentUser['name'] == 'Administrateur')
+                                        <a href="{{ route('evenementDelete', $evenement['id']) }}" class="btn btn-danger pull-right"><i class="fa fa-trash"></i></a>
+                                        <a href="{{ route('evenementEdit', $evenement['id']) }}" class="btn btn-primary pull-right mr-2"><i class="fa fa-edit"></i></a>
+                                    @endif
+                                @endforeach
                             </h4>
                         </div>
                         <div class="card-body">

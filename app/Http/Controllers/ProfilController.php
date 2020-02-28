@@ -100,6 +100,7 @@ class ProfilController extends Controller
 
     public function show($id) {
         $userId = Auth::id();
+        $currentUsers = User::join('role_user', 'users.id', '=', 'role_user.user_id')->join('roles', 'roles.id', '=', 'role_user.role_id')->select('roles.name')->where('users.id', $userId)->get();
 
         $user = User::select('name', 'email', 'created_at', 'id')->where('users.id', $id)->first();
 
@@ -110,6 +111,6 @@ class ProfilController extends Controller
         $nbAbonnements = Follow::where('user_id', $id)->count();
         $nbAbonnes = Follow::where('user_id_2', $id)->count();
 
-        return view('profil.show', compact('user', 'publications', 'follow', 'nbAbonnements', 'nbAbonnes'));
+        return view('profil.show', compact('user', 'publications', 'follow', 'nbAbonnements', 'nbAbonnes', 'currentUsers'));
     }
 }
