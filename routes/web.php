@@ -31,6 +31,8 @@ Route::get('/profil/email', 'ProfilController@email')->name('profilEmail');
 Route::post('/profil/email', 'ProfilController@changeEmail')->name('profilChangeEmail');
 Route::get('/profil/mdp', 'ProfilController@mdp')->name('profilMdp');
 Route::post('/profil/mdp', 'ProfilController@changeMdp')->name('profilChangeMdp');
+Route::post('/profil/avatar', 'ProfilController@updateAvatar')->name('profilAvatar');
+
 
 Route::get('/evenements', 'EvenementController@index')->name('evenements');
 Route::get('/evenements/create', 'EvenementController@create')->name('evenementCreate');

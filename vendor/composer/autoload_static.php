@@ -431,6 +431,7 @@ class ComposerStaticInita58dcc3e29e5f14bf465c61e323892c1
         'App\\Http\\Controllers\\ProfilController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfilController.php',
         'App\\Http\\Controllers\\PublicationController' => __DIR__ . '/../..' . '/app/Http/Controllers/PublicationController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
+        'App\\Http\\Middleware\\Admin' => __DIR__ . '/../..' . '/app/Http/Middleware/Admin.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',

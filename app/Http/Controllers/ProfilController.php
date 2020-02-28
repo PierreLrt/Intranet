@@ -19,7 +19,7 @@ class ProfilController extends Controller
     public function index() {
         $userId = Auth::id();
 
-        $user = User::select('name', 'email', 'created_at')->where('users.id', $userId)->first();
+        $user = User::select('name', 'email', 'created_at', 'avatar')->where('users.id', $userId)->first();
 
         return view('profil.index', compact('user'));
     }
@@ -112,5 +112,27 @@ class ProfilController extends Controller
         $nbAbonnes = Follow::where('user_id_2', $id)->count();
 
         return view('profil.show', compact('user', 'publications', 'follow', 'nbAbonnements', 'nbAbonnes', 'currentUsers'));
+    }
+
+    public function updateAvatar(Request $request) {
+        $userId = Auth::id();
+
+        // Avatar
+        request()->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        $dossierAvatar = 'images/avatars/';
+        $imageNameAvatar = time().'.'.request()->avatar->getClientOriginalExtension();
+        request()->avatar->move(public_path('images/avatars'), $imageNameAvatar);
+
+        $user = User::where('id', $userId)->first();
+        $user['avatar'] = $dossierAvatar . $imageNameAvatar;
+
+        $user->save();
+
+        session()->flash('succes', 'L\'avatar a été mis en ligne !');
+
+        return redirect()->route('profil');
     }
 }

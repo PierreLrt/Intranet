@@ -27,6 +27,7 @@ return array(
     'App\\Http\\Controllers\\ProfilController' => $baseDir . '/app/Http/Controllers/ProfilController.php',
     'App\\Http\\Controllers\\PublicationController' => $baseDir . '/app/Http/Controllers/PublicationController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
+    'App\\Http\\Middleware\\Admin' => $baseDir . '/app/Http/Middleware/Admin.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',

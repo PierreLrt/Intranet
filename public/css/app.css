@@ -10887,3 +10887,8 @@ a.text-dark:focus {
 .masquer {
     display: none;
 }
+
+.avat {
+    width: 100px;
+    height: 100px;
+}
