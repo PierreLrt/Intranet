@@ -19,7 +19,7 @@
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
 
-                                Posté par <a href="{{ route('profilShow', $actualite['idUser']) }}">{{ __('@') }}{{$actualite['name']}}</a> le {{date('d/m/Y à H\hm', strtotime($actualite['created_at']))}}
+                                Posté par <a href="{{ route('profilShow', $actualite['idUser']) }}"><img src="{{URL::asset($actualite['avatar'])}}" class="rounded-circle avat-min"> {{ __('@') }}{{$actualite['name']}}</a> le {{date('d/m/Y à H\hm', strtotime($actualite['created_at']))}}
 
                                 @foreach($currentUsers as $currentUser)
                                     @if($currentUser['name'] == 'Administrateur')

@@ -50,7 +50,7 @@
                                             <ul>
                                                 @foreach($evenement['participants'] as $participant)
                                                     <li>
-                                                        <a href="{{ route('profilShow', $participant['user_id']) }}">{{ __('@') }}{{$participant['name']}}</a>
+                                                        <a href="{{ route('profilShow', $participant['user_id']) }}"><img src="{{URL::asset($participant['avatar'])}}" class="rounded-circle avat-min"> {{ __('@') }}{{$participant['name']}}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>
@@ -67,7 +67,7 @@
                                         <div class="card-body">
                                             @foreach($evenement['enAttentes'] as $participant)
                                                 <li>
-                                                    <a href="{{ route('profilShow', $participant['user_id']) }}">{{ __('@') }}{{$participant['name']}}</a>
+                                                    <a href="{{ route('profilShow', $participant['user_id']) }}"><img src="{{URL::asset($participant['avatar'])}}" class="rounded-circle avat-min"> {{ __('@') }}{{$participant['name']}}</a>
                                                 </li>
                                             @endforeach
                                         </div>
@@ -83,7 +83,7 @@
                                         <div class="card-body">
                                             @foreach($evenement['nonParticipants'] as $participant)
                                                 <li>
-                                                    <a href="{{ route('profilShow', $participant['user_id']) }}">{{ __('@') }}{{$participant['name']}}</a>
+                                                    <a href="{{ route('profilShow', $participant['user_id']) }}"><img src="{{URL::asset($participant['avatar'])}}" class="rounded-circle avat-min"> {{ __('@') }}{{$participant['name']}}</a>
                                                 </li>
                                             @endforeach
                                         </div>

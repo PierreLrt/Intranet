@@ -30,7 +30,7 @@
             <div class="card mb-2">
                 <div class="card-header">
                     <h5>
-                        <a href="{{ route('profilShow', $publication['idUser']) }}">{{ __('@') }}{{$publication['name']}}</a>
+                        <a href="{{ route('profilShow', $publication['idUser']) }}"><img src="{{URL::asset($publication['avatar'])}}" class="rounded-circle avat-min"> {{ __('@') }}{{$publication['name']}}</a>
                         @foreach($currentUsers as $currentUser)
                             @if($currentUser['name'] == 'Administrateur')
                                 <a href="{{ route('publicationDelete', $publication['id']) }}" class="btn btn-danger pull-right"><i class="fa fa-trash"></i></a>

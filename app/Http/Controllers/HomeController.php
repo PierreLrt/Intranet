@@ -27,7 +27,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $actualites = Actualite::join('users', 'users.id', '=', 'actualites.user_id')->select('actualites.created_at', 'actualites.titre', 'actualites.id', 'actualites.contenu', 'users.name', 'users.id AS idUser')->orderBy('actualites.created_at', 'DESC')->get();
+        $actualites = Actualite::join('users', 'users.id', '=', 'actualites.user_id')->select('actualites.created_at', 'actualites.titre', 'actualites.id', 'actualites.contenu', 'users.name', 'users.id AS idUser', 'users.avatar')->orderBy('actualites.created_at', 'DESC')->get();
+        //dd($actualites);
 
         $userId = Auth::id();
         $currentUsers = User::join('role_user', 'users.id', '=', 'role_user.user_id')->join('roles', 'roles.id', '=', 'role_user.role_id')->select('roles.name')->where('users.id', $userId)->get();

@@ -17,7 +17,7 @@ class PublicationController extends Controller
     public function index() {
         $userId = Auth::id();
 
-        $publications = Publication::join('users', 'users.id', '=', 'publications.user_id')->join('follows', 'follows.user_id_2', 'users.id')->select('publications.id', 'publications.message', 'publications.created_at', 'users.name', 'users.id AS idUser')->where('follows.user_id', $userId)->orderBy('publications.created_at', 'DESC')->get();
+        $publications = Publication::join('users', 'users.id', '=', 'publications.user_id')->join('follows', 'follows.user_id_2', 'users.id')->select('publications.id', 'publications.message', 'publications.created_at', 'users.name', 'users.id AS idUser', 'users.avatar')->where('follows.user_id', $userId)->orderBy('publications.created_at', 'DESC')->get();
 
         $currentUsers = User::join('role_user', 'users.id', '=', 'role_user.user_id')->join('roles', 'roles.id', '=', 'role_user.role_id')->select('roles.name')->where('users.id', $userId)->get();
 

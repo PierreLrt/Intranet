@@ -10892,3 +10892,8 @@ a.text-dark:focus {
     width: 100px;
     height: 100px;
 }
+
+.avat-min {
+    width: 25px;
+    height: 25px;
+}

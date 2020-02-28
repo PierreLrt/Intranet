@@ -102,9 +102,9 @@ class ProfilController extends Controller
         $userId = Auth::id();
         $currentUsers = User::join('role_user', 'users.id', '=', 'role_user.user_id')->join('roles', 'roles.id', '=', 'role_user.role_id')->select('roles.name')->where('users.id', $userId)->get();
 
-        $user = User::select('name', 'email', 'created_at', 'id')->where('users.id', $id)->first();
+        $user = User::select('name', 'email', 'created_at', 'id', 'avatar')->where('users.id', $id)->first();
 
-        $publications = Publication::join('users', 'users.id', '=', 'publications.user_id')->select('publications.id', 'publications.message', 'publications.created_at', 'users.name', 'users.id AS idUser')->where('users.id', $id)->orderBy('publications.created_at')->get();
+        $publications = Publication::join('users', 'users.id', '=', 'publications.user_id')->select('publications.id', 'publications.message', 'publications.created_at', 'users.name', 'users.id AS idUser', 'users.avatar')->where('users.id', $id)->orderBy('publications.created_at')->get();
 
         $follow = Follow::where('user_id', $userId)->where('user_id_2', $user['id'])->count();
 

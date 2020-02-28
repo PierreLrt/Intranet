@@ -43,6 +43,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-center">
+                                <img src="{{URL::asset($user['avatar'])}}" class="rounded-circle avat mb-2 mt-3">
+
                                 <h2>{{$user['name']}}</h2>
 
                                 @if($follow == 0)
@@ -66,7 +68,7 @@
             <div class="card mb-2">
                 <div class="card-header">
                     <h5>
-                        <a href="{{ route('profilShow', $publication['idUser']) }}">{{ __('@') }}{{$publication['name']}}</a>
+                        <a href="{{ route('profilShow', $publication['idUser']) }}"><img src="{{URL::asset($publication['avatar'])}}" class="rounded-circle avat-min"> {{ __('@') }}{{$publication['name']}}</a>
                         @foreach($currentUsers as $currentUser)
                             @if($currentUser['name'] == 'Administrateur')
                                 <a href="{{ route('publicationDelete', $publication['id']) }}" class="btn btn-danger pull-right"><i class="fa fa-trash"></i></a>
