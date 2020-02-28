@@ -17,8 +17,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/actualites/create', 'ActualiteController@create')->name('actualiteCreate');
-Route::post('/actualites/create', 'ActualiteController@store')->name('actualiteStore');
+Route::get('/actualites/create', 'ActualiteController@create')->name('actualiteCreate')->middleware('admin');
+Route::post('/actualites/create', 'ActualiteController@store')->name('actualiteStore')->middleware('admin');
 Route::get('/actualites/edit/{id}', 'ActualiteController@edit')->where(['id' => '[0-9]+'])->name('actualiteEdit')->middleware('admin');
 Route::post('/actualites/edit/{id}', 'ActualiteController@update')->where(['id' => '[0-9]+'])->name('actualiteUpdate')->middleware('admin');
 Route::delete('/actualites/{id}', 'ActualiteController@delete')->where(['id' => '[0-9]+'])->name('actualiteDelete')->middleware('admin');
@@ -35,8 +35,8 @@ Route::post('/profil/avatar', 'ProfilController@updateAvatar')->name('profilAvat
 
 
 Route::get('/evenements', 'EvenementController@index')->name('evenements');
-Route::get('/evenements/create', 'EvenementController@create')->name('evenementCreate');
-Route::post('/evenements/create', 'EvenementController@store')->name('evenementStore');
+Route::get('/evenements/create', 'EvenementController@create')->name('evenementCreate')->middleware('admin');
+Route::post('/evenements/create', 'EvenementController@store')->name('evenementStore')->middleware('admin');
 Route::get('/evenements/edit/{id}', 'EvenementController@edit')->where(['id' => '[0-9]+'])->name('evenementEdit')->middleware('admin');
 Route::post('/evenements/edit/{id}', 'EvenementController@update')->where(['id' => '[0-9]+'])->name('evenementUpdate')->middleware('admin');
 Route::get('/evenements/delete/{id}', 'EvenementController@delete')->where(['id' => '[0-9]+'])->name('evenementDelete')->middleware('admin');

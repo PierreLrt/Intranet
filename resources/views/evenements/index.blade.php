@@ -5,7 +5,11 @@
         <h1 class="text-center mb-3">Evenements</h1>
 
         <div class="row justify-content-center">
-            <a href="{{ route('evenementCreate') }}" class="btn btn-primary mb-2"><i class="fa fa-plus-circle"></i> Créer</a>
+            @foreach($currentUsers as $currentUser)
+                @if($currentUser['name'] == 'Administrateur')
+                    <a href="{{ route('evenementCreate') }}" class="btn btn-primary mb-2"><i class="fa fa-plus-circle"></i> Créer</a>
+                @endif
+            @endforeach
 
             @foreach ($evenements as $evenement)
                 <div class="col-md-12 mb-3">
