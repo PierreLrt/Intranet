@@ -53,3 +53,4 @@ Route::get('/follow/{id}', 'FollowController@follow')->where(['id' => '[0-9]+'])
 Route::get('/unfollow/{id}', 'FollowController@unfollow')->where(['id' => '[0-9]+'])->name('followUnfollow');
 
 Route::get('/annuaire', 'AnnuaireController@index')->name('annuaire');
+Route::post('/annuaire/search', 'AnnuaireController@search')->name('annuaireSearch');
