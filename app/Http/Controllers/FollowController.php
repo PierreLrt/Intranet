@@ -19,10 +19,16 @@ class FollowController extends Controller
         $follow = Follow::where('user_id', $userId)->where('user_id_2', $id)->count();
 
         if($follow == 0) {
-            Follow::create([
-                'user_id' => $userId,
-                'user_id_2' => $id
-            ]);
+            if($userId != $id) {
+                Follow::create([
+                    'user_id' => $userId,
+                    'user_id_2' => $id
+                ]);
+            }
+
+            else {
+                session()->flash('erreur', 'Vous ne pouvez pas vous suivre vous-même');
+            }
         }
 
         return redirect()->route('profilShow', $id);
