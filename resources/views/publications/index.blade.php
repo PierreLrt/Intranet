@@ -49,6 +49,7 @@
                     @else
                         <a href="{{ route('publicationLike', $publication['id']) }}" class="btn btn-secondary"><i class="fa fa-thumbs-up"></i></a>
                     @endif
+                    {{ count($publication['likes']) }} like(s)
                 </div>
             </div>
         @endforeach
