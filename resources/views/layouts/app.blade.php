@@ -89,19 +89,21 @@
         </nav>
 
         <main class="py-4">
-            @if(session()->has('succes'))
-                <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Succès !</h4>
-                    <p>{{ session()->get('succes') }}</p>
-                </div>
-            @endif
+            <div class="container">
+                @if(session()->has('succes'))
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Succès !</h4>
+                        <p>{{ session()->get('succes') }}</p>
+                    </div>
+                @endif
 
-            @if(session()->has('erreur'))
-                <div class="alert alert-danger" role="alert">
-                    <h4 class="alert-heading">Erreur !</h4>
-                    <p>{{ session()->get('erreur') }}</p>
-                </div>
-            @endif
+                @if(session()->has('erreur'))
+                    <div class="alert alert-danger" role="alert">
+                        <h4 class="alert-heading">Erreur !</h4>
+                        <p>{{ session()->get('erreur') }}</p>
+                    </div>
+                @endif
+            </div>
 
             @yield('content')
         </main>
