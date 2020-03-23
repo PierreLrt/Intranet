@@ -53,7 +53,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('home') }}">{{ __('Accueil') }}</a>
+                                <a class="nav-link" href="{{ route('home') }}">{{ __('Actualités') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('evenements') }}">{{ __('Evenements') }}</a>
