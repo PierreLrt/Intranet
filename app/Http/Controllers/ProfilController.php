@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Follow;
+use App\Like;
 use App\Publication;
 use App\User;
 use Illuminate\Http\Request;
@@ -105,6 +106,23 @@ class ProfilController extends Controller
         $user = User::select('name', 'email', 'created_at', 'id', 'avatar')->where('users.id', $id)->first();
 
         $publications = Publication::join('users', 'users.id', '=', 'publications.user_id')->select('publications.id', 'publications.message', 'publications.created_at', 'users.name', 'users.id AS idUser', 'users.avatar')->where('users.id', $id)->orderBy('publications.created_at')->get();
+
+        $likeBool = false;
+
+        foreach ($publications as $publication) {
+            $likes = Like::where('publication_id', $publication['id'])->get();
+
+            $likesUser = Like::where('publication_id', $publication['id'])->where('user_id', $userId)->count();
+
+            if($likesUser > 0) {
+                $likeBool = true;
+            }
+
+            $publication['likes'] = $likes;
+            $publication['likeBool'] = $likeBool;
+
+            $likeBool = false;
+        }
 
         $follow = Follow::where('user_id', $userId)->where('user_id_2', $user['id'])->count();
 

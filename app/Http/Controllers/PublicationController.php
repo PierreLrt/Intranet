@@ -85,6 +85,7 @@ class PublicationController extends Controller
             $like->save();
         }
 
-        return redirect()->route('publication');
+        //return redirect()->route('publication');
+        return redirect()->back();
     }
 }
