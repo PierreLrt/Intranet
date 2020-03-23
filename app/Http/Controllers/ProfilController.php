@@ -153,4 +153,12 @@ class ProfilController extends Controller
 
         return redirect()->route('profil');
     }
+
+    public function listAbonnes($id) {
+        $user = User::select('id', 'name', 'avatar')->where('id', $id)->first();
+
+        $follows = Follow::join('users', 'users.id', '=', 'follows.user_id')->select('users.id AS userId', 'name', 'avatar')->where('follows.user_id_2', $id)->get();
+
+        return view('profil.listabonnes', compact('follows', 'user'));
+    }
 }
