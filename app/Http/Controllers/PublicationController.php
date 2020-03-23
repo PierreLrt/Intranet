@@ -88,4 +88,27 @@ class PublicationController extends Controller
         //return redirect()->route('publication');
         return redirect()->back();
     }
+
+    public function show($id) {
+        $userId = Auth::id();
+
+        $likeBool = false;
+
+        $publication = Publication::join('users', 'users.id', '=', 'publications.user_id')->join('follows', 'follows.user_id_2', 'users.id')->select('publications.id', 'publications.message', 'publications.created_at', 'users.name', 'users.id AS idUser', 'users.avatar')->where('publications.id', $id)->first();
+
+        $likes = Like::join('users', 'users.id', '=', 'likes.user_id')->select('users.id AS userId', 'name', 'avatar')->where('likes.publication_id', $publication['id'])->get();
+
+        $likesUser = Like::where('publication_id', $publication['id'])->where('user_id', $userId)->count();
+
+        if($likesUser > 0) {
+            $likeBool = true;
+        }
+
+        $publication['likes'] = $likes;
+        $publication['likeBool'] = $likeBool;
+
+        $currentUsers = User::join('role_user', 'users.id', '=', 'role_user.user_id')->join('roles', 'roles.id', '=', 'role_user.role_id')->select('roles.name')->where('users.id', $userId)->get();
+
+        return view('publications.show', compact('publication', 'currentUsers'));
+    }
 }

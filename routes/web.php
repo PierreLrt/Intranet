@@ -47,6 +47,7 @@ Route::get('/publications', 'PublicationController@index')->name('publication');
 Route::post('/publications/create', 'PublicationController@store')->name('publicationStore');
 Route::get('/publications/delete/{id}', 'PublicationController@delete')->where(['id' => '[0-9]+'])->name('publicationDelete')->middleware('admin');
 Route::get('/publications/like/{id}', 'PublicationController@like')->where(['id' => '[0-9]+'])->name('publicationLike');
+Route::get('/publications/{id}', 'PublicationController@show')->where(['id' => '[0-9]+'])->name('publicationShow');
 
 Route::get('/profil/{id}', 'ProfilController@show')->where(['id' => '[0-9]+'])->name('profilShow');
 
