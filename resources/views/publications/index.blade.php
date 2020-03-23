@@ -41,6 +41,14 @@
                 <div class="card-body">
                     <p class="text-right">{{date('d/m/Y à H\hm', strtotime($publication['created_at']))}}</p>
                     {!! nl2br(e($publication['message'])) !!}
+
+                    <hr>
+
+                    @if($publication['likeBool'])
+                        <a href="{{ route('publicationLike', $publication['id']) }}" class="btn btn-primary"><i class="fa fa-thumbs-up"></i></a>
+                    @else
+                        <a href="{{ route('publicationLike', $publication['id']) }}" class="btn btn-secondary"><i class="fa fa-thumbs-up"></i></a>
+                    @endif
                 </div>
             </div>
         @endforeach

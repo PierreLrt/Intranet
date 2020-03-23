@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Like;
 use App\Publication;
 use App\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,24 @@ class PublicationController extends Controller
     public function index() {
         $userId = Auth::id();
 
+        $likeBool = false;
+
         $publications = Publication::join('users', 'users.id', '=', 'publications.user_id')->join('follows', 'follows.user_id_2', 'users.id')->select('publications.id', 'publications.message', 'publications.created_at', 'users.name', 'users.id AS idUser', 'users.avatar')->where('follows.user_id', $userId)->orderBy('publications.created_at', 'DESC')->get();
+
+        foreach ($publications as $publication) {
+            $likes = Like::where('publication_id', $publication['id'])->get();
+
+            $likesUser = Like::where('publication_id', $publication['id'])->where('user_id', $userId)->count();
+
+            if($likesUser > 0) {
+                $likeBool = true;
+            }
+
+            $publication['likes'] = $likes;
+            $publication['likeBool'] = $likeBool;
+
+            $likeBool = false;
+        }
 
         $currentUsers = User::join('role_user', 'users.id', '=', 'role_user.user_id')->join('roles', 'roles.id', '=', 'role_user.role_id')->select('roles.name')->where('users.id', $userId)->get();
 
@@ -45,6 +63,27 @@ class PublicationController extends Controller
         $publication->delete();
 
         session()->flash('succes', 'La publication a été supprimé !');
+
+        return redirect()->route('publication');
+    }
+
+    public function like($id) {
+        $userId = Auth::id();
+
+        $like = Like::where('user_id', $userId)->where('publication_id', $id)->first();
+
+        if($like) {
+            $like->delete();
+        }
+
+        else {
+            $like = Like::create([
+                'user_id' => $userId,
+                'publication_id' => $id,
+            ]);
+
+            $like->save();
+        }
 
         return redirect()->route('publication');
     }
