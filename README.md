@@ -19,7 +19,7 @@ Placez-vous dans le dossier nommé *intranet*, puis exécutez la commande suivan
 composer install
 ```
 
-Il vous faudra à présent créer une base de données MySQL nommée *intranet*, puis ouvrir le fichier **.ent** dans un IDE et saisir vos identifiants MySQL dans *DB_USERNAME* et *DB_PASSWORD*.
+Il vous faudra à présent créer une base de données MySQL nommée *intranet*, puis ouvrir le fichier **.env** dans un IDE et saisir vos identifiants MySQL dans *DB_USERNAME* et *DB_PASSWORD*.
 
 ```
 DB_CONNECTION=mysql
