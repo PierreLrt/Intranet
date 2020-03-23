@@ -13,7 +13,7 @@
                             </span>
                         </span>
                     </a>
-                    <a href="" class="list-group-item list-group-item-action">
+                    <a href="{{ route('profilListAbonnes', $user['id']) }}" class="list-group-item list-group-item-action">
                         <span class="row text-center">
                             <span class="col-md-6">Abonnés</span>
                             <span class="col-md-6">
@@ -87,7 +87,7 @@
                     @else
                         <a href="{{ route('publicationLike', $publication['id']) }}" class="btn btn-secondary"><i class="fa fa-thumbs-up"></i></a>
                     @endif
-                    {{ count($publication['likes']) }} like(s)
+                    <a href="{{ route('publicationShow', $publication['id']) }}">{{ count($publication['likes']) }} like(s)</a>
                 </div>
             </div>
         @endforeach

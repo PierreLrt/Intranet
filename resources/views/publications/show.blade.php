@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="container">
+        <a href="{{ URL::previous() }}" class="btn btn-primary mb-2"><i class="fa fa-arrow-circle-left"></i> Retour</a>
+
         <div class="card mb-2">
             <div class="card-header">
                 <h5>

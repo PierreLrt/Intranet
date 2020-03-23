@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="container">
+        <a href="{{ URL::previous() }}" class="btn btn-primary"><i class="fa fa-arrow-circle-left"></i> Retour</a>
+
         <h2 class="text-center mb-3">Liste des abonnés de <a href="{{ route('profilShow', $user['id']) }}"><img src="{{URL::asset($user['avatar'])}}" class="rounded-circle avat-min"> {{ __('@') }}{{$user['name']}}</a></h2>
 
         <div class="row mb-3">
