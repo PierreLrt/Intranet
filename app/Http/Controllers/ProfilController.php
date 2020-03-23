@@ -40,6 +40,12 @@ class ProfilController extends Controller
 
         $erreurs = [];
 
+        $domaine = explode("@", $request['newemail']);
+
+        if(strtolower($domaine[1]) != "viacesi.fr") {
+            array_push($erreurs, "L'email doit être un email CESI");
+        }
+
         if($user['email'] != $request['email']) {
             array_push($erreurs, "L'ancien email ne pas correct");
         }

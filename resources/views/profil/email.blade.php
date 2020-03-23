@@ -34,6 +34,9 @@
                                         <label for="newemail" class="col-4 col-form-label">Nouvel email</label>
                                         <div class="col-8">
                                             <input id="newemail" name="newemail" class="form-control here" required="required" type="email">
+                                            @error('email')
+                                                <strong class="text-danger">L'adresse email doit être une adresse email CESI.</strong>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="form-group row">
