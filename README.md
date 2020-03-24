@@ -53,6 +53,10 @@ Puis, vous devez insérer dans la table "*role_user*" l'identifiant du role et l
 
 ![Role](https://i.ibb.co/L8xthbF/role.png "Role")
 
+## Base de données
+
+![BDD](https://i.ibb.co/5W5zrgF/bdd.png "BDD")
+
 ## Présentation
 
 ### Inscription
