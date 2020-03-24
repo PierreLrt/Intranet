@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-3 ">
                 <div class="list-group ">
-                    <a href="" class="list-group-item list-group-item-action">
+                    <a href="{{ route('profilListAbonnements', $user['id']) }}" class="list-group-item list-group-item-action">
                         <span class="row text-center">
                             <span class="col-md-6">Abonnements</span>
                             <span class="col-md-6">

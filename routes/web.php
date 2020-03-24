@@ -33,6 +33,7 @@ Route::get('/profil/mdp', 'ProfilController@mdp')->name('profilMdp');
 Route::post('/profil/mdp', 'ProfilController@changeMdp')->name('profilChangeMdp');
 Route::post('/profil/avatar', 'ProfilController@updateAvatar')->name('profilAvatar');
 Route::get('/profil/abonnes/{id}', 'ProfilController@listAbonnes')->where(['id' => '[0-9]+'])->name('profilListAbonnes');
+Route::get('/profil/abonnements/{id}', 'ProfilController@listAbonnements')->where(['id' => '[0-9]+'])->name('profilListAbonnements');
 
 Route::get('/evenements', 'EvenementController@index')->name('evenements');
 Route::get('/evenements/create', 'EvenementController@create')->name('evenementCreate')->middleware('admin');

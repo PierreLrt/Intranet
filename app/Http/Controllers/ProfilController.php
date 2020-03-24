@@ -167,4 +167,12 @@ class ProfilController extends Controller
 
         return view('profil.listabonnes', compact('follows', 'user'));
     }
+
+    public function listAbonnements($id) {
+        $user = User::select('id', 'name', 'avatar')->where('id', $id)->first();
+
+        $follows = Follow::join('users', 'users.id', '=', 'follows.user_id_2')->select('users.id AS userId', 'name', 'avatar')->where('follows.user_id', $id)->get();
+
+        return view('profil.listabonnements', compact('follows', 'user'));
+    }
 }
