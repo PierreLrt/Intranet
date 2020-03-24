@@ -43,6 +43,16 @@ Vous pouvez maintenant lancer le serveur et vous rendre sur l'adresse [http://lo
 php artisan serve
 ```
 
+Afin de donner les droits d'administrateur à un utilisateur, vous devez insérer une ligne manuellemnent dans la table "*roles*" :
+- name : Administrateur
+- description : Administrateur
+
+![Admin](https://i.ibb.co/PYJPHpB/admin.png "Admin")
+
+Puis, vous devez insérer dans la table "*role_user*" l'identifiant du role et l'identifiant de l'utilisateur.
+
+![Role](https://i.ibb.co/L8xthbF/role.png "Role")
+
 ## Présentation
 
 ### Inscription
